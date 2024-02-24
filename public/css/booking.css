@@ -1,0 +1,88 @@
+/* Overall container */
+.container {
+    padding: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+
+}
+
+/* Book Ambulance heading */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Map element */
+#map {
+    flex: 1;
+    height: 75vh; /* Or your desired height */
+  }
+
+/* Alert message */
+.alert {
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+
+.alert-success {
+    background-color: #dff0d8;
+    color: #3c763d;
+}
+
+/* Form group styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+/* Label styling */
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* Select element styling */
+#hospital {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Textarea styling */
+#medical_requirements {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+/* Book Ambulance button */
+.btn-primary {
+    background-color: #007bff;
+    color:white;
+    padding: 10px 10px;
+    border: none;
+    border-radius: 4px;
+    margin-top: 5%;
+    cursor: pointer;
+   
+}
+
+/* Hidden inputs styling */
+input[type="hidden"] {
+    display: none;
+}
+
+/* Hospital selection dropdown styling */
+.form-control {
+    display: block;
+    width: 100%;
+    padding: 8px 14px;
+    line-height: 1.42857143;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}

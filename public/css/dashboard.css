@@ -1,0 +1,85 @@
+/* public/css/dashboard.css */
+
+/* Sidebar Styles */
+/* Sidebar Styles */
+
+body {
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.sidebar {
+    background-color: #f8f9fa;
+    padding: 15px;
+    border-right: 1px solid #dee2e6;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+    color: #000;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #007bff;
+}
+
+/* Main Content Styles */
+.main-content {
+    padding: 20px;
+}
+
+/* Navigation Bar Styles */
+.navbar {
+    margin-bottom: 20px;
+}
+
+.navbar-nav {
+    margin-right: auto;
+}
+
+.navbar-nav a {
+    margin-right: 10px;
+}
+
+.h2 {
+    color: white;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+
+/* User Image Styles */
+.user-image img {
+    width: 40px; /* Adjust as needed */
+    height: 40px; /* Adjust as needed */
+    border-radius: 50%; /* Make it a circle */
+    margin-right: 10px; /* Add spacing between the image and dropdown */
+}
+
+/* Dropdown Styles */
+.dropdown {
+    margin-top: 10px; /* Adjust vertical spacing */
+    position: relative; /* Ensure proper positioning */
+}
+
+.dropdown-toggle::after {
+    content: ''; /* Remove default arrow */
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-style: solid;
+    border-width: 0.3em 0.3em 0;
+    border-color: #000 transparent transparent;
+    margin-left: 5px; /* Add spacing between text and arrow */
+}

@@ -16,9 +16,13 @@ class CreateUsersTable extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
-            $table->enum('role', ['patient', 'driver'])->default('patient');
-            $table->string('photo')->nullable(); // nullable photo column
-            $table->string('phone')->nullable();
+            $table->string('passport')->nullable()->default(null);
+            $table->enum('role', ['patient', 'driver','admin'])->default('patient');
+            $table->string('photo')->nullable(); 
+            $table->string('age')->nullable()->default(null);
+            $table->string('phone')->nullable()->default(null);            
+            $table->string('allergies')->nullable();
+            $table->string('disabilities')->nullable();
             $table->timestamps();
         });
         

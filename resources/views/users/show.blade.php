@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@include('dashboard')
+
 @section('title')
 
 Profile
@@ -52,8 +52,24 @@ Profile
                                                 <input type="email" class="form-control" id="email" name="email" value="{{ $user->email }}">
                                             </div>
                                             <div class="form-group">
+                                                <label for="passport"><strong>ID/Passport:</strong></label>
+                                                <input type="text" class="form-control" id="passport" name="passport" value="{{ $user->passport}}">
+                                            </div>
+                                            <div class="form-group">
                                                 <label for="phone"><strong>Phone:</strong></label>
                                                 <input type="text" class="form-control" id="phone" name="phone" value="{{ $user->phone }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="age"><strong>Age:</strong></label>
+                                                <input type="text" class="form-control" id="age" name="age" value="{{ $user->age}}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="allergies"><strong>allergies:</strong></label>
+                                                <input type="text" class="form-control" id="allergies" name="allergies" value="{{ $user->allergies }}">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="disabilities"><strong>disabilities:</strong></label>
+                                                <input type="text" class="form-control" id="disabilities" name="disabilities" value="{{ $user->disabilities }}">
                                             </div>
                                         </div>
                                         <div class="col-12">

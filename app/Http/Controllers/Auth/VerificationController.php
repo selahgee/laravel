@@ -14,7 +14,7 @@ class VerificationController extends Controller
     use VerifiesEmails;
 
     // Redirect to the dashboard after email verification
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/book-ambulance';
 
     public function redirectTo()
     {

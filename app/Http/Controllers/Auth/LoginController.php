@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AmbulanceController;
 
 class LoginController extends Controller
 {
@@ -33,28 +34,26 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, $request->has('remember_me'))) {
-            $user = Auth::user();
-
-            if ($user && property_exists($user, 'role')) {
-                switch ($user->role) {
-                    case 'patient':
-                    case 'driver':
-                        return redirect()->route('dashboard');
-                        break;
-
-                    case 'admin':
-                        return redirect()->route('admin.dashboard');
-                        break;
-
-                    default:
-                        return redirect()->route('register'); // Redirect to registration page if role is not defined
-                }
-            } else {
-                // If the user's role is not defined, redirect to the registration page
-                return redirect()->route('register');
-            }
+            return $this->authenticated($request, Auth::user());
         }
 
         return redirect()->back()->withInput($request->only('email'));
+    }
+
+    protected function authenticated(Request $request, $user)
+    {
+        switch ($user->role) {
+            case 'patient':
+                return redirect()->route('ambulance.booking.form');
+                break;
+
+            case 'driver':
+            case 'admin':
+                return redirect()->route('admin.dashboard');
+                break;
+
+            default:
+                return redirect()->route('register'); // Redirect to registration page if role is not defined
+        }
     }
 }

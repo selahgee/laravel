@@ -1,21 +1,22 @@
-/* public/css/dashboard.css */
-
-/* Sidebar Styles */
-/* Sidebar Styles */
-
+/* Body Styles */
 body {
-    background-image: url('../images/background.jpg');
-    background-size: cover;
-    font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f4f4f4;
 }
 
+/* Sidebar Styles */
 .sidebar {
     background-color: #f8f9fa;
     padding: 15px;
     border-right: 1px solid #dee2e6;
+    width: 250px; /* Adjust width as needed */
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh; /* Occupy full height of viewport */
+    z-index: 1000; /* Ensure sidebar appears above other content */
 }
 
 .sidebar ul {
@@ -35,10 +36,11 @@ body {
 
 /* Main Content Styles */
 .main-content {
+    margin-left: 250px; /* Adjust margin to account for sidebar width */
     padding: 20px;
 }
 
-/* Navigation Bar Styles */
+/* Navbar Styles */
 .navbar {
     margin-bottom: 20px;
 }
@@ -56,7 +58,6 @@ body {
     margin-bottom: 20px;
     text-align: center;
 }
-
 
 /* User Image Styles */
 .user-image img {

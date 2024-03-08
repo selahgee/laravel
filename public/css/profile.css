@@ -1,19 +1,20 @@
 /* Add this CSS to your styles.css file or within a <style> tag in your HTML file */
 
+
 .content {
     max-width: 500px;
-    margin: auto;
+    margin-top: auto;
     padding: 20px;
-    display: flex;
-    flex-direction: row;
+    margin: 0 auto; /* Center the container horizontally */
+  width: 300%;
 }
 
 .card {
     border: 1px solid #ccc;
     border-radius: 5px;
-    padding: 30px;
+    padding: 10px;
     margin-bottom: 20px;
-    flex: 1;
+  
 }
 
 .profile-user-img {

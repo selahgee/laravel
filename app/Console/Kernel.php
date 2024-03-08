@@ -4,9 +4,22 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use App\Http\Middleware\RedirectIfAuthenticated; // Import your custom middleware class
 
 class Kernel extends ConsoleKernel
 {
+    /**
+     * The application's middleware stack.
+     *
+     * These middleware are run during every request to your application.
+     *
+     * @var array
+     */
+    protected $middleware = [
+        // Other middleware...
+        RedirectIfAuthenticated::class, // Add your custom middleware here
+    ];
+
     /**
      * Define the application's command schedule.
      */

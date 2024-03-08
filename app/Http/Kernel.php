@@ -69,6 +69,7 @@ class Kernel extends HttpKernel
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
             'redirectifauthenticated' => \App\Http\Middleware\RedirectIfAuthenticated::class,
+            'driver' => \App\Http\Middleware\Driver::class,
         
         
                

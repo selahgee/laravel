@@ -51,13 +51,21 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
+            'passport' => 'nullable|string|max:20',
             'phone' => 'nullable|string|max:20',
+            'age' => 'nullable|string|max:20',
+            'allergies' => 'required|string|max:255',
+            'disabilities' => 'required|string|max:255',
         ]);
 
         $user->update([
             'name' => $request->input('name'),
             'email' => $request->input('email'),
+            'passport' => $request->input('passport'),
             'phone' => $request->input('phone'),
+            'age' => $request->input('age'),
+            'allergies' => $request->input('allergies'),
+            'disabilities' => $request->input('disabilities'),
         ]);
 
         // Redirect the user to their profile page after the update

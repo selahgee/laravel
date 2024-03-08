@@ -35,6 +35,19 @@ require __DIR__.'/../vendor/autoload.php';
 
 /*
 |--------------------------------------------------------------------------
+| Create Application
+|--------------------------------------------------------------------------
+|
+| We will create a new instance of the application. This bootstraps the
+| Laravel framework and gets it ready for use, then returns it so that
+| it can respond to incoming HTTP requests from this client's browser.
+|
+*/
+
+$app = require_once __DIR__.'/../bootstrap/app.php';
+
+/*
+|--------------------------------------------------------------------------
 | Run The Application
 |--------------------------------------------------------------------------
 |
@@ -44,12 +57,16 @@ require __DIR__.'/../vendor/autoload.php';
 |
 */
 
-$app = require_once __DIR__.'/../bootstrap/app.php';
-
 $kernel = $app->make(Kernel::class);
 
-$response = $kernel->handle(
-    $request = Request::capture()
-)->send();
-
-$kernel->terminate($request, $response);
+try {
+    $response = $kernel->handle(
+        $request = Request::capture()
+    )->send();
+} catch (Exception $e) {
+    // Handle exceptions gracefully
+    http_response_code(500);
+    echo "An error occurred: " . $e->getMessage();
+} finally {
+    $kernel->terminate($request, $response);
+}

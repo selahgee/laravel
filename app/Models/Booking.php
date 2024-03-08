@@ -10,9 +10,12 @@ class Booking extends Model
         'user_id',
         'pickup_latitude',
         'pickup_longitude',
-        'hospital_id',
+        'pickup_location',
+        'hospital_latitude',
+        'hospital_longitude',
+        'hospital_location',
         'medical_requirements',
-        'completed',
+        'status',
     ];
 
     public function user()

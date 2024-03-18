@@ -14,7 +14,13 @@ class RedirectIfAuthenticated
 
             switch ($role) {
                 case 'admin':
-                    return redirect('/admin');
+                    return redirect('/admin.dashboard1');
+                    break;
+                    case 'patient':
+                    return redirect('/ambulance.booking.form');
+                    break;
+                    case 'driver':
+                    return redirect('/driver.CRUD.index');
                     break;
                 default:
                     return redirect('/dashboard');

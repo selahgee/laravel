@@ -9,13 +9,16 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\HospitalController;
 use App\Http\Controllers\SettingsController;
 use App\Http\Controllers\AmbulanceController;
-use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\IndexController;
 use App\Http\Controllers\NotificationController;
+use App\Http\Controllers\Admin\PatientController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Driver\DriverController;
 use App\Http\Controllers\DriverProfilecontroller;
+use App\Http\Controllers\Admin\DispatchController;
 use App\Http\Controllers\DriverDashboardController;
+use App\Http\Controllers\Admin\DashboardController1;
 use App\Http\Controllers\Admin\PermissionController;
 
 /*
@@ -46,22 +49,16 @@ Route::post('/register', [RegisterController::class, 'register']);
 
 //
 Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
-    
+    Route::get('admin/dashboard1', [DashboardController1::class, 'dashboard1'])->name('admin.dashboard1');
+     
     // Admin routes
     Route::middleware(['role:admin'])->group(function () {
-        Route::get('/admin', [IndexController::class, 'index'])->name('admin.dashboard');
+        Route::get('/admin/dashboard1', [DashboardController1::class, 'dashboard1'])->name('admin.dashboard1');
     });
 });
 // Patient routes
 Route::resource('users', UserController::class)->only('show','edit','update')->middleware('auth');
 Route::put('users/{user}', [UserController::class, 'update'])->name('users.update');
-
-
-
-
-//Route::get('/profile', [UserController::class,'profile'])->name('user.profile');
-//Route::post('/profile', 'UserController@profile')->name('user.postProfile');
 
 // Booking routes 
 Route::get('/book-ambulance', [AmbulanceController::class, 'showBookingForm'])->name('ambulance.booking.form');
@@ -105,17 +102,26 @@ Route::get('/settings', [SettingsController::class, 'index'])->name('settings.in
 Route::put('/settings/update-profile', [SettingsController::class, 'updateProfile'])->name('settings.updateProfile');
 Route::put('/settings/change-password', [SettingsController::class, 'changePassword'])->name('settings.changePassword');
 
-//Driver's Dashboard Routes 
-Route::middleware(['auth', 'driver'])->group(function () {
-    Route::get('/driver/dashboard', [DriverDashboardController::class, 'index'])->name('driver.dashboard');
-    Route::post('/driver/booking/{id}/accept', [DriverDashboardController::class, 'acceptBooking'])->name('driver.booking.accept');
-    Route::post('/driver/booking/{id}/decline', [DriverDashboardController::class, 'declineBooking'])->name('driver.booking.decline');
-});
 
-//Driver Profile Routes
-Route::middleware(['auth'])->group(function () {
-    Route::get('/driver/profile', [DriverProfileController::class, 'index'])->name('driver.profile');
-    Route::put('driver/profile/update', [DriverProfilecontroller::class, 'update'])->name('driver.profile.update');
-});
+//DRIVER ROUTES
+// Driver's Profile
+Route::get('/driver/CRUD', [DriverController::class, 'index'])->name('driver.CRUD.index');
+Route::post('/driver/CRUD', [DriverController::class, 'store'])->name('driver.CRUD.store');
+Route::get('/driver/CRUD/{id}/edit', [DriverController::class, 'edit'])->name('driver.CRUD.edit');
+Route::put('/driver/CRUD/{id}', [DriverController::class, 'update'])->name('driver.CRUD.update');
+Route::delete('/driver/CRUD/{id}', [DriverController::class, 'destroy'])->name('driver.CRUD.destroy');
 
-// Drivers CRUD Routes
+
+
+//Admin SIDEBAR ROUTES 
+//Manage User Routes
+Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patient.index');
+Route::get('/admin/patient/create', [PatientController::class, 'create'])->name('admin.patient.create');
+Route::post('/admin/patient', [PatientController::class, 'store'])->name('admin.patient.store');
+Route::get('/admin/patient/{id}/edit', [PatientController::class, 'edit'])->name('admin.patient.edit');
+Route::delete('/admin/patient/{id}', [PatientController::class, 'destroy'])->name('admin.patient.destroy');
+Route::put('/admin/patient/{id}', [PatientController::class, 'update'])->name('admin.patient.update');
+
+
+//Dispatching Responders
+Route::post('/admin/dispatch/driver', [DispatchController::class, 'dispatchDriver'])->name('admin.dispatch.driver');

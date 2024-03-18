@@ -7,6 +7,7 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AmbulanceController;
+use App\Http\Controllers\Admin\DashboardController1;
 
 class LoginController extends Controller
 {
@@ -48,8 +49,10 @@ class LoginController extends Controller
                 break;
 
             case 'driver':
+            return redirect()->route('driver.CRUD.index');
+                break;
             case 'admin':
-                return redirect()->route('admin.dashboard');
+                return redirect()->route('admin.dashboard1');
                 break;
 
             default:
